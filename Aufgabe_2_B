@@ -1,0 +1,36 @@
+"""
+Zeit-Optimierung der Fibonacci-Berechnung
+
+Lässt sich die Berechnungszeit der Fibonacci Zahlen optimieren? Hinweis: Einmal
+berechnete Fibonacci-Zahlen können zwischengespeichert und wiederverwendet
+werden.
+
+Implementieren Sie eine zeit-optimierte Variante der Fibonacci-Berechnung.
+Berechnen Sie die Zahlen der Fibonacci-Folge von 1 bis 100.
+Tracken Sie die jeweils benötigte Zeit. Was können Sie zur Laufzeit des
+Algorithmus sagen? """
+
+import time
+
+def fibanocci(n, memo={}):
+    if n in memo:
+        return memo[n]
+    elif n <= 2:
+        return 1
+    else:
+        memo[n] = fibanocci(n-1, memo) + fibanocci(n-2, memo)
+        return memo[n]
+        
+
+startstart = time.time()
+
+for i in range(1, 101):
+    start_time = time.time()
+    result = fibanocci(i)
+    end_time = time.time()
+    times = start_time - end_time
+    print(f"Fibonacci({i}) = {result}", times)
+
+endend = time.time()
+execution_time = endend - startstart
+print(f"Total execution time: {execution_time} seconds")

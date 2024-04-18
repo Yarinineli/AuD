@@ -1,0 +1,31 @@
+"""
+Fibonacci-Berechnung mit Berücksichtigung einer Sterberate
+
+Ändern Sie die Fibonacci-Formel so, dass die Kaninchen nach 3 Generationen
+sterben. D.h. sie leben 3 Generationen und sterben sobald die vierte Generation
+geboren wird. Wie sieht die entsprechende Formel aus?
+Ändern Sie Ihre Implementierung entsprechend."""
+
+
+import time
+
+def fib_death(n, memo={0: 0, 1: 1, 2: 1, 3: 1}):
+    if n not in memo:
+        if n <= 3:
+            memo[n] = 1
+        else:
+            memo[n] = fib_death(n-1) + fib_death(n-2) - fib_death(n-4)
+    return memo[n]
+
+startstart = time.time()
+
+for i in range(1, 101):
+    start_time = time.time()
+    result = fib_death(i)
+    end_time = time.time()
+    times = end_time - start_time
+    print(f"Fibonacci({i}) = {result}, Execution time: {times} seconds")
+
+endend = time.time()
+execution_time = endend - startstart
+print(f"Total execution time: {execution_time} seconds")

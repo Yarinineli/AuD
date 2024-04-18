@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+import random
+import time
+
+def bubble_sort(randomList):
+    n = len(randomList)
+    for i in range(n):
+        for j in range(0, n-1):
+            if randomList[j] > randomList[j+1]:
+                randomList[j], randomList[j+1] = randomList[j+1], randomList[j]
+    return randomList
+
+list_lengths = []
+runtimes = []
+
+for length in range(1, 1001, 100):
+    randomList = [random.randint(1, 100) for _ in range(length)]
+    start_time = time.time()
+    sortedList = bubble_sort(randomList)
+    end_time = time.time()
+    runtime = end_time - start_time
+    list_lengths.append(length)
+    runtimes.append(runtime)
+
+plt.plot(list_lengths, runtimes)
+plt.xlabel("List Length")
+plt.ylabel("Runtime (seconds)")
+plt.title("Bubble Sort Runtime vs. List Length")
+plt.show()
+print(sortedList)
