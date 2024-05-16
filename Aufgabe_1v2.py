@@ -47,7 +47,3 @@ while points_to_check:
 
 
 
-
-
-
-
