@@ -13,7 +13,8 @@ def print_game_board(game_board):
 
 def convert_file_to_field(filename):
     with open(filename, 'r') as file:
-        return [list(line.strip()) for line in file]
+        #Strip nimmt mir die Leerzeichen weg
+        return [list(line[:-1]) for line in file]
 
 # Beispiel-Spielfeld in "field.txt" lesen
 game_board = convert_file_to_field("field.txt")
@@ -28,7 +29,6 @@ directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 # Prüfplan
 points_to_check = start_points[:]
 
-# Funktion zur Überprüfung, ob die Position innerhalb der Spielfeldgrenzen liegt
 def is_within_bounds(ni, nj):
     return 0 <= ni < len(game_board) and 0 <= nj < len(game_board[0])
 
